@@ -4,6 +4,9 @@ const path = require('path');
 const http = require('http');
 const url = require("url");
 
+const indexHtml = fs.readFileSync('index.html');
+const loginHtml = fs.readFileSync('login.html');
+
 const server = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'text/html');
 
@@ -11,14 +14,11 @@ const server = http.createServer((req, res) => {
     const pathname = parsedUrl.pathname;
 
     if(pathname == "/login"){
-        res.write('<html> hello LOGIN! </html>')
+        res.write(loginHtml + "")
     }
     else {
-        res.write('<html> hello world! </html>')
+        res.write(indexHtml + "")
     }
-
-    
-
     res.end();  
 })
 
